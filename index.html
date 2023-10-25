@@ -60,71 +60,103 @@
 				margin-bottom: 30px !important;
 			}
 		}
-	</style>
+
+/*分隔線*/
+
+        /* CSS樣式 */
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: #333;
+            transition: 0.3s;
+        }
+
+        .sidebar a {
+            padding: 15px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #fff;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #555;
+        }
+
+        .open {
+            left: 0;
+        }
+
+        .content {
+            margin-left: 0;
+            padding: 20px;
+        }
+
+        /* 修改開啟按鈕和"X"按鈕的樣式 */
+        .openbtn, .closebtn {
+            font-size: 30px;
+            cursor: pointer;
+        }
+		
+		/* 讓開啟按鈕固定在最上方 */
+        .openbtn {
+            position: fixed;
+            top: 0;
+        }
+		
+        /* 滑動的圖片 */
+        .content {
+            padding: 20px;
+        }
+
+        /* 圖片初始位置（在畫面之外的右側） */
+        .sliding-image {
+            position: absolute;
+            right: -100px; /* 此數值可以根據您的需要調整 */
+            opacity: 0;
+            transition: right 1s, opacity 1s; /* 滑動和淡入效果的時間 */
+        }
+        /* 圖片最終位置 */
+        .sliding-image.active {
+            right: 50%; /* 最終位置，根據您的需要調整 */
+        }
+    </style>
 </head>
+
 <body>
 	<header class="ts-center">
 		<div class="ts-container">
 			<div class="ts-header is-inverted is-massive" style="">2023藝術的AI創作</div>
 		</div>
 	</header>
-	<main class="">
-		<div class="ts-container">
-			<div>
-			    <p>Speak a new language so that the world will be a new world.</p>
-			    <div class="cite">― Rumi</div>
-			</div>
-			<br><br>
-			<div class="ts-grid is-relaxed is-stackable is-3-columns">
-				<div class="column">
-					<div class="ts-box is-bottom-indicated">
-						<div class="ts-content is-secondary">
-							<div class="ts-header is-center-aligned is-huge">課程教材</div>
-						</div>
-					</div>
-					<div style="min-height:200px">
-						<a href="/linking-video" target="_top" class="ts-button is-fluid is-large">連音練習影片</a>
-						<a href="/linking-ppt" target="_top" class="ts-button is-fluid is-large">連音課程簡報</a>
-						<a href="/linking-practice" target="_top" class="ts-button is-fluid is-large">課文段落練習</a>
-						<a href="/song" target="_top" class="ts-button is-fluid is-large">聽歌曲學文法</a>
-					</div>
-				</div>
-				<div class="column">
-					<div class="ts-box is-bottom-indicated">
-						<div class="ts-content is-secondary">
-							<div class="ts-header is-center-aligned is-huge">學習資源</div>
-						</div>
-					</div>
-					<div style="min-height:200px">
-						<a href="/youtube" target="_top" class="ts-button is-fluid is-large">跟著 YouTuber 學英語</a>
-						<a href="/site" target="_top" class="ts-button is-fluid is-large">英語學習網站推薦</a>
-					</div>
-				</div>
-				<div class="column">
-					<div class="ts-box is-bottom-indicated">
-						<div class="ts-content is-secondary">
-							<div class="ts-header is-center-aligned is-huge">故事選讀</div>
-						</div>
-					</div>
-					<div style="min-height:200px">
-						<a href="/story-1" class="ts-button is-fluid is-large">Frankenstein</a>
-						<a href="/story-2" class="ts-button is-fluid is-large">Romeo Juliet</a>
-						<a href="/story-3" class="ts-button is-fluid is-large" style="font-size:18px!important">Journey to the Center of the Earth</a>
-						<a href="/story-4" class="ts-button is-fluid is-large">The Phantom of the Opera</a>
-						<a href="/story-4" class="ts-button is-fluid is-large" style="font-size:18px!important">The Adventures of Huckleberry Finn</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</main>
-	<div class="ts-container">
-		<div class="ts-wrap is-middle-aligned is-end-aligned">
-			<div class="ts-image is-mini">
-				<img src="https://i.imgur.com/UIbuaVC.jpg">
-			</div>
-			<a href="https://lc.mcut.edu.tw/p/404-1038-27979.php?Lang=zh-tw" target="_blank" style="text-decoration:none">About the Teacher</a>
-		</div>
-		<br>
-	</div>
+
+<div class="sidebar" id="mySidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&#9776;</a>
+    <a href="page1.html" target="contentFrame">課程A</a>
+    <a href="page2.html" target="contentFrame">課程B</a>
+    <a href="page3.html" target="contentFrame">課程C</a>
+</div>
+<div class="content">
+    <div class="openbtn" onclick="toggleNav()">&#9776;</div>
+    <iframe name="contentFrame" width="100%" height="100%" frameborder="0"></iframe>
+</div>
+
+<script>
+    // JavaScript函數，用於開啟或關閉清單
+    function toggleNav() {
+        var sidebar = document.getElementById("mySidebar");
+        if (sidebar.classList.contains('open')) {
+            sidebar.classList.remove('open');
+        } else {
+            sidebar.classList.add('open');
+        }
+    }
+	
+</script>
+
 </body>
+
 </html>
