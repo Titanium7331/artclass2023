@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>水平中央平滑進入和淡入效果</title>
+    <style>
+        /* CSS樣式 */
+        /* 滑動的圖片 */
+        .content {
+            padding: 20px;
+        }
+
+        /* 圖片初始位置（在畫面之外的右側） */
+        .sliding-image {
+            position: absolute;
+            right: -100px; /* 此數值可以根據您的需要調整 */
+            opacity: 0;
+            transition: right 1s, opacity 1s; /* 滑動和淡入效果的時間 */
+        }
+        /* 圖片最終位置 */
+        .sliding-image.active {
+            right: 50%; /* 最終位置，根據您的需要調整 */
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+
+<h1>簡單HTML表格</h1>
+
+<table border="1">
+    <tr>
+        <th>標題1</th>
+        <th>標題2</th>
+        <th>標題3</th>
+    </tr>
+    <tr>
+        <td>行1, 列1</td>
+        <td>行1, 列2</td>
+        <td>行1, 列3</td>
+    </tr>
+    <tr>
+        <td>行2, 列1</td>
+        <td>行2, 列2</td>
+        <td>行2, 列3</td>
+    </tr>
+    <tr>
+        <td>行3, 列1</td>
+        <td>行3, 列2</td>
+        <td>行3, 列3</td>
+    </tr>
+</table>
+    <div class="sliding-image">
+        <img src="res/02.png" alt="水平中央平滑進入的圖片">
+    </div>
+    <!-- 此處放置您的網頁內容 -->
+</div>
+
+<script>
+    var slidingImage = document.querySelector('.sliding-image');
+    var triggerPosition = 300; // 圖片滑入觸發位置，根據您的需求調整
+
+    function handleScroll() {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop >= triggerPosition && !slidingImage.classList.contains('active')) {
+            slidingImage.classList.add('active');
+            slidingImage.style.opacity = '1';
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    // 初始檢查一次，以處理頁面已捲動到圖片位置的情況
+    handleScroll();
+</script>
+
+</body>
+</html>
