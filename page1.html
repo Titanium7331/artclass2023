@@ -1,167 +1,50 @@
 <!DOCTYPE html>
-<html data-scheme="light" data-scale="large">
+<html>
 <head>
-	<title>2023藝術的AI創作</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/4.0.0-beta.3/tocas.min.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
-	<style>
-		main {
-			margin: 90px 0 !important;
-		}
-
-		a.ts-button {
-			margin-top: 20px;
-			background: #99d1ff;
-			border-color: #99d1ff;
-			color: var(--ts-primary-900);
-			padding: 1rem 1.25rem;
-			font-size: 20px !important;
-		}
-
-		header {
-			height: 25vh !important;
-			background: var(--ts-primary-400);
-			background: url('res/01.png') 100% / cover;
-			color: #FFF !important;
-			font-size:2.6rem;
-			text-shadow: 0 0 5px rgba(0,0,0,.8);
-		}
-
-		.ts-box.is-bottom-indicated {
-			border-bottom-color: var(--ts-primary-700);
-		}
-
-		.ts-box.is-bottom-indicated .ts-content {
-			background: var(--ts-primary-600) !important;
-			background: url('res/03.png') 100% / cover !important;
-			color: #FFF;
-			padding: 3rem 1rem;
-		}
-
-		@media screen and (max-width: 768px) {
-			header {
-				font-size:2.2rem;
-			}
-
-			main {
-				margin: 30px 0 !important;
-			}
-
-			.ts-grid {
-				display: block;
-			}
-
-			.column {
-				margin-top: 30px !important;
-				margin-bottom: 30px !important;
-			}
-		}
-
-/*分隔線*/
-
+    <title>水平中央平滑進入和淡入效果</title>
+    <style>
         /* CSS樣式 */
-        .sidebar {
-            height: 100%;
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: -250px;
-            background-color: #333;
-            transition: 0.3s;
-        }
-
-        .sidebar a {
-            padding: 15px;
-            text-decoration: none;
-            font-size: 20px;
-            color: #fff;
-            display: block;
-        }
-
-        .sidebar a:hover {
-            background-color: #555;
-        }
-
-        .open {
-            left: 0;
-        }
-
         .content {
-            margin-left: 0;
             padding: 20px;
+            position: relative;
+            overflow: hidden; /* 隱藏內容溢出部分 */
+        }
+
+        /* 圖片初始位置（在畫面之外的右側） */
+        .sliding-image {
+            right: 0; /* 初始位置（在畫面之外的右側） */
+            opacity: 0;
+            transition: right 1s, opacity 1s; /* 滑動和淡入效果的時間 */
+            transform: translateX(100%); /* 水平位移，根據圖片寬度調整 */
+        }
+        /* 圖片最終位置 */
+        .sliding-image.active {
+            right: 0; /* 水平中央位置 */
+            transform: translateX(0); /* 不進行水平位移 */
         }
     </style>
 </head>
-
 <body>
-	<header class="ts-center">
-		<div class="ts-container">
-			<div class="ts-header is-inverted is-massive" style="">2023藝術的AI創作</div>
-		</div>
-	</header>
-	<main class="">
-		<div class="ts-container">
-			<div>
-			    <p>Speak a new language so that the world will be a new world.</p>
-			    <div class="cite">― Rumi</div>
-			</div>
-			<br><br>
-			<div class="ts-grid is-relaxed is-stackable is-3-columns">
-				<div class="column">
-					<div class="ts-box is-bottom-indicated">
-						<div class="ts-content is-secondary">
-							<div class="ts-header is-center-aligned is-huge">課程教材</div>
-						</div>
-					</div>
-					<div style="min-height:200px">
-						<a href="/linking-video" target="_top" class="ts-button is-fluid is-large">連音練習影片</a>
-						<a href="/linking-ppt" target="_top" class="ts-button is-fluid is-large">連音課程簡報</a>
-						<a href="/linking-practice" target="_top" class="ts-button is-fluid is-large">課文段落練習</a>
-						<a href="/song" target="_top" class="ts-button is-fluid is-large">聽歌曲學文法</a>
-					</div>
-				</div>
-				<div class="column">
-					<div class="ts-box is-bottom-indicated">
-						<div class="ts-content is-secondary">
-							<div class="ts-header is-center-aligned is-huge">學習資源</div>
-						</div>
-					</div>
-					<div style="min-height:200px">
-						<a href="/youtube" target="_top" class="ts-button is-fluid is-large">跟著 YouTuber 學英語</a>
-						<a href="/site" target="_top" class="ts-button is-fluid is-large">英語學習網站推薦</a>
-					</div>
-				</div>
-				<div class="column">
-					<div class="ts-box is-bottom-indicated">
-						<div class="ts-content is-secondary">
-							<div class="ts-header is-center-aligned is-huge">故事選讀</div>
-						</div>
-					</div>
-					<div style="min-height:200px">
-						<a href="/story-1" class="ts-button is-fluid is-large">Frankenstein</a>
-						<a href="/story-2" class="ts-button is-fluid is-large">Romeo Juliet</a>
-						<a href="/story-3" class="ts-button is-fluid is-large" style="font-size:18px!important">Journey to the Center of the Earth</a>
-						<a href="/story-4" class="ts-button is-fluid is-large">The Phantom of the Opera</a>
-						<a href="/story-4" class="ts-button is-fluid is-large" style="font-size:18px!important">The Adventures of Huckleberry Finn</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</main>
-	<div class="ts-container">
-		<div class="ts-wrap is-middle-aligned is-end-aligned">
-			<div class="ts-image is-mini">
-				<img src="https://i.imgur.com/UIbuaVC.jpg">
-			</div>
-			<a href="https://lc.mcut.edu.tw/p/404-1038-27979.php?Lang=zh-tw" target="_blank" style="text-decoration:none">About the Teacher</a>
-		</div>
-		<br>
-	</div>
+<div class="sliding-image">
+    <img src="res/02.png" alt="水平中央平滑進入的圖片">
+</div>
+
+<script>
+    var slidingImage = document.querySelector('.sliding-image');
+    var triggerPosition = 300; // 圖片滑入觸發位置，根據您的需求調整
+
+    function handleScroll() {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop >= triggerPosition && !slidingImage.classList.contains('active')) {
+            slidingImage.classList.add('active');
+            slidingImage.style.opacity = '1';
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    // 初始檢查一次，以處理頁面已捲動到圖片位置的情況
+    handleScroll();
+</script>
 
 </body>
-
 </html>
