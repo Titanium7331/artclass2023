@@ -9,152 +9,57 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
 	<style>
-		main {
-			margin: 90px 0 !important;
-		}
-
-		a.ts-button {
-			margin-top: 20px;
-			background: #99d1ff;
-			border-color: #99d1ff;
-			color: var(--ts-primary-900);
-			padding: 1rem 1.25rem;
-			font-size: 20px !important;
-		}
-
-		header {
-			height: 25vh !important;
-			background: var(--ts-primary-400);
-			background: url('res/01.png') 100% / cover;
-			color: #FFF !important;
-			font-size:2.6rem;
-			text-shadow: 0 0 5px rgba(0,0,0,.8);
-		}
-
-		.ts-box.is-bottom-indicated {
-			border-bottom-color: var(--ts-primary-700);
-		}
-
-		.ts-box.is-bottom-indicated .ts-content {
-			background: var(--ts-primary-600) !important;
-			background: url('res/03.png') 100% / cover !important;
-			color: #FFF;
-			padding: 3rem 1rem;
-		}
-
-		@media screen and (max-width: 768px) {
-			header {
-				font-size:2.2rem;
-			}
-
-			main {
-				margin: 30px 0 !important;
-			}
-
-			.ts-grid {
-				display: block;
-			}
-
-			.column {
-				margin-top: 30px !important;
-				margin-bottom: 30px !important;
-			}
-		}
-
-/*分隔線*/
-
-        /* CSS樣式 */
-        .sidebar {
-            height: 100%;
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: -250px;
-            background-color: #333;
-            transition: 0.3s;
+		body {
+            margin: 0;
+            padding: 0;
+            background-image: url('res/David Teniers the Younger_The Archduke Leopold Wilhelm in his Picture Gallery in Brussels(1647-51).jpg'); /* 圖片路徑 */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
         }
-
-        .sidebar a {
-            padding: 15px;
-            text-decoration: none;
-            font-size: 20px;
-            color: #fff;
-            display: block;
-        }
-
-        .sidebar a:hover {
-            background-color: #555;
-        }
-
-        .open {
-            left: 0;
-        }
-
         .content {
-            margin-left: 0;
-            padding: 20px;
-        }
-
-        /* 修改開啟按鈕和"X"按鈕的樣式 */
-        .openbtn, .closebtn {
-            font-size: 30px;
-            cursor: pointer;
-        }
-		
-		/* 讓開啟按鈕固定在最上方 */
-        .openbtn {
+            /* 內容樣式，添加額外的內容並進行捲動 */
+            width: 100%;
+            height: 100%; /* 增加內容高度，以使捲動可見 */
+			}
+		/*通用的按鈕設定*/
+		.fixed-button {
             position: fixed;
-            top: 0;
+            z-index: 999;
         }
-		
-        /* 滑動的圖片 */
-        .content {
-            padding: 20px;
+        .fixed-button1 {
+            top: 10%; /* 距離畫面頂部的位置，根據需要調整百分比 */
+            left: 20%; /* 距離畫面左側的位置，根據需要調整百分比 */
         }
-
-        /* 圖片初始位置（在畫面之外的右側） */
-        .sliding-image {
-            position: absolute;
-            right: -100px; /* 此數值可以根據您的需要調整 */
-            opacity: 0;
-            transition: right 1s, opacity 1s; /* 滑動和淡入效果的時間 */
+        .fixed-button1 img {
+            width: 100px; /* 圖片寬度 */
+            height: 50px; /* 圖片高度 */
         }
-        /* 圖片最終位置 */
-        .sliding-image.active {
-            right: 50%; /* 最終位置，根據您的需要調整 */
+        .fixed-button2 {
+            top: 30%; /* 距離畫面頂部的位置，根據需要調整百分比 */
+            left: 40%; /* 距離畫面左側的位置，根據需要調整百分比 */
+        }
+        .fixed-button2 img {
+            width: 100px; /* 圖片寬度 */
+            height: 50px; /* 圖片高度 */
         }
     </style>
 </head>
 
 <body>
-	<header class="ts-center">
-		<div class="ts-container">
-			<div class="ts-header is-inverted is-massive" style="">2023藝術的AI創作</div>
-		</div>
-	</header>
 
-<div class="sidebar" id="mySidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&#9776;</a>
-    <a href="page1.html" target="contentFrame">課程A</a>
-    <a href="page2.html" target="contentFrame">課程B</a>
-    <a href="page3.html" target="contentFrame">課程C</a>
-</div>
-<div class="content">
-    <div class="openbtn" onclick="toggleNav()">&#9776;</div>
-    <iframe name="contentFrame" width="100%" height="100%" frameborder="0"></iframe>
-</div>
+<!-- 圖片按鈕 -->
+<a href="page1.html" class="fixed-button fixed-button1">
+    <img src="res/01.png" alt="按鈕圖片">
+</a>
+<a href="page2.html" class="fixed-button fixed-button2">
+    <img src="res/02.png" alt="按鈕圖片">
+</a>
+
+
 
 <script>
-    // JavaScript函數，用於開啟或關閉清單
-    function toggleNav() {
-        var sidebar = document.getElementById("mySidebar");
-        if (sidebar.classList.contains('open')) {
-            sidebar.classList.remove('open');
-        } else {
-            sidebar.classList.add('open');
-        }
-    }
-	
 </script>
 
 </body>
