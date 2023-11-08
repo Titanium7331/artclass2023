@@ -4,58 +4,95 @@
     <title>水平中央平滑進入和淡入效果</title>
     <style>
         /* CSS樣式 */
-        /* 滑動的圖片 */
         .content {
             padding: 20px;
+            position: relative;
+            overflow: hidden; /* 隱藏內容溢出部分 */
         }
 
         /* 圖片初始位置（在畫面之外的右側） */
         .sliding-image {
             position: absolute;
-            right: -100px; /* 此數值可以根據您的需要調整 */
+            right: 0; /* 初始位置（在畫面之外的右側） */
             opacity: 0;
             transition: right 1s, opacity 1s; /* 滑動和淡入效果的時間 */
+            transform: translateX(50%); /* 水平位移，根據圖片寬度調整 */
         }
         /* 圖片最終位置 */
         .sliding-image.active {
-            right: 50%; /* 最終位置，根據您的需要調整 */
+            right: 0; /* 水平中央位置 */
+            transform: translateX(0); /* 不進行水平位移 */
         }
+		
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('res/David Teniers the Younger_The Archduke Leopold Wilhelm in his Picture Gallery in Brussels(1647-51).jpg'); /* 圖片路徑 */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+        }
+		
+		/* 白色底的設定 */
+        .overlay {
+            position: fixed;
+            top: 20%;
+            left: 50%; /* 水平置中 */
+            transform: translateX(-50%); /* 使元素水平置中 */
+            width: 70%; /* 調整白底的寬度 */
+			hieght: 100%;
+            background: rgba(255, 255, 255, 0.6); /* 半透明的白底，可調整透明度 */
+            text-align: center;
+            padding: 20px;
+        }
+        .content {
+            /* 內容樣式 */
+            text-align: center;
+            font-family: 'Times New Roman', serif; /* 指定字型，以Times New Roman為例 */
+			font-style: normal;
+			font-weight: 400;
+        }
+		
+		.fixed-button {
+            position: fixed;
+            z-index: 999;
+        }
+        .fixed-button1 {
+            top: 90%; /* 距離畫面頂部的位置，根據需要調整百分比 */
+            left: 90%; /* 距離畫面左側的位置，根據需要調整百分比 */
+        }
+        .fixed-button1 img {
+            width: 50px; /* 圖片寬度 */
+            height: 50px; /* 圖片高度 */
     </style>
 </head>
 <body>
 
-<div class="content">
-
-<h1>簡單HTML表格</h1>
-
-<table border="1">
-    <tr>
-        <th>標題1</th>
-        <th>標題2</th>
-        <th>標題3</th>
-    </tr>
-    <tr>
-        <td>行1, 列1</td>
-        <td>行1, 列2</td>
-        <td>行1, 列3</td>
-    </tr>
-    <tr>
-        <td>行2, 列1</td>
-        <td>行2, 列2</td>
-        <td>行2, 列3</td>
-    </tr>
-    <tr>
-        <td>行3, 列1</td>
-        <td>行3, 列2</td>
-        <td>行3, 列3</td>
-    </tr>
-</table>
-    <div class="sliding-image">
-        <img src="res/02.png" alt="水平中央平滑進入的圖片">
-    </div>
-    <!-- 此處放置您的網頁內容 -->
+	<div class="overlay">
+		<div class="content">
+			<div class="class conttent">
+揮灑烈愛(Frida，2002)<br />
+墨西哥超現實主義畫家芙烈達．卡蘿(Frida Kahlo)的傳記<br />
+電影，1925年9月的一場車禍永遠改變了芙烈達的一生。<br />
+在痛苦治療和復健過程中，她把心力投注在作畫，藉以忘掉痛苦。<br />
+			<div class="sliding-image">
+				<img src="res/02.png" alt="水平中央平滑進入的圖片">
+			</div>
+芙烈達突然受到全世界矚目，主要是因為在畫作中融合了<br />
+個人情感、藝術表現和政治意涵，不但將自我延伸到政治<br />
+文化的領域，並呈現印第安傳統服飾、首飾和髮型，更將<br />
+內心的恐懼、痛苦、迷戀和愛情轉化成一幅幅令人難忘的<br />
+驚人畫作。她這一生中不斷地經歷各種身心上的痛楚，所<br />
+以才能夠擁抱最赤裸的自我，一位作家甚至認為這些畫作<br />
+代表了“墨西哥長久以來受到的佔領、痛苦和壓迫”。<br />
+			</div>
+		</div>
+	</div>
 </div>
-
+<a href="網頁測試.html" class="fixed-button fixed-button1">
+    <img src="res/01.png" alt="按鈕圖片">
+</a>
 <script>
     var slidingImage = document.querySelector('.sliding-image');
     var triggerPosition = 300; // 圖片滑入觸發位置，根據您的需求調整
